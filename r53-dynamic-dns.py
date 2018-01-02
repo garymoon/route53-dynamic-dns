@@ -3,14 +3,13 @@
 import socket
 import sys
 import time
-import boto3
 import logging
 import os
 import json
-from time import sleep
 from urllib import request
 from datetime import datetime
 from string import Template
+import boto3
 
 DIR = os.path.dirname(os.path.realpath(__file__))
 CONFIG = json.load(open(os.path.join(DIR, 'config.json')))
@@ -100,7 +99,7 @@ change_id = change['ChangeInfo']['Id']
 
 while change['ChangeInfo']['Status'] != 'INSYNC':
   logging.info('Waiting {}s for change "{}"'.format(CONFIG['update_wait_secs'], change_id))
-  sleep(CONFIG['update_wait_secs'])
+  time.sleep(CONFIG['update_wait_secs'])
   change = r53.get_change(Id=change_id)
 
 logging.info('Change "{}" is of status "{}"'.format(change_id, change['ChangeInfo']['Status']))
