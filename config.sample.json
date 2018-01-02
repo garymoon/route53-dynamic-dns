@@ -1,0 +1,23 @@
+{
+  "aws_key_id": "",
+  "aws_key_secret": "",
+  "aws_region": "us-west-2",
+
+  "domain": "mydns.com",
+  "subdomain": "server",
+  "ttl": 3600,
+  "zone_id": "",
+  "update_wait_secs": 20,
+
+  "from_address": "",
+  "to_address": "",
+  "subject": "Dynamic DNS Update",
+
+  "get_ip_urls": [
+    "https://ip4.lt",
+    "https://icanhazip.com/",
+    "https://ipinfo.io/ip",
+    "https://wtfismyip.com/text",
+    "https://inet.tools/ip"
+  ]
+}
