@@ -14,7 +14,7 @@
 5. Create a cronjob that runs the script at regular intervals. With infrequent updates, the script will be free to run if it runs once an hour. E.g. `17 * * * * nobody python3 /opt/route53-dynamic-dns/r53-dynamic-dns.py`
 
 ### Notes
-* Unfortunately the IAM policy cannot be locked down to a specific resource record, so make sure that the domain you're using is unimportant.
+* Unfortunately the IAM policy cannot be locked down to a specific resource record, so make sure that the domain you're using is unimportant. If need be, you can set up an unimportant subdomain as a hosted zone to confine API access.
 * The get-IP URLs are checked in order, so start with the most reliable to keep requests to a minimum. Any site in the list must return just an IP address, nothing more.
 * The script will exit with status code 1 if it fails. All output is to stdout.
 * The logging is relatively verbose, so you can see it work as it goes.
