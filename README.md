@@ -11,7 +11,7 @@
 2. Set up a domain for email sending in SES, and validate the receiving address.
 3. Create a programmatic-access IAM user with the policy in `iam_policy.json`, substituting the zone ID and to-address.
 4. Create a `config.json` from the `config.sample.json`.
-5. Create a cronjob that runs the script at regular intervals (with infrequent updates, the script will be free to run if it runs once an hour).
+5. Create a cronjob that runs the script at regular intervals. With infrequent updates, the script will be free to run if it runs once an hour. E.g. `17 * * * * nobody python3 /opt/route53-dynamic-dns/r53-dynamic-dns.py`
 
 ### Notes
 * Unfortunately the IAM policy cannot be locked down to a specific resource record, so make sure that the domain you're using is unimportant.
