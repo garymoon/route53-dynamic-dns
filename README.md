@@ -15,8 +15,8 @@
 
 ### Notes
 * Unfortunately the IAM policy cannot be locked down to a specific resource record, so make sure that the domain you're using is unimportant.
-* The get-IP URLs are checked in order, so start with the most reliable to keep requests to a minimum. Any site in the list must return just an IP address, nothing more.
+* The get-IP URLs are checked in order, so start with the most reliable to keep requests to a minimum. Any site in the list must return just an IP address, nothing more. There are a number of other options if you're willing to forgo TLS.
 * The script will exit with status code 1 if it fails. All output is to stdout.
 * The logging is relatively verbose, so you can see it work as it goes.
 * The script will wait for the change to complete, polling every `update_wait_secs`, before exiting.
-* The `ipaddress` library could have been used in place of `socket`, but would require Python >= 3.3.
+* As a backup plan, you can consider maintaining a reverse SSH tunnel with something like this: `autossh -M 0 -N -R 22000:127.0.0.1:22 -g -o ServerAliveInterval=60 -o BatchMode=yes -i [key] [user]@[host]`. There are a number of examples around the interwebs for using init.d/inittab, upstart or systemd to monitor the tunnel for you.
